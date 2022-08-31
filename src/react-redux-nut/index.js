@@ -90,9 +90,12 @@ export function useSelector(selector) {
   //   };
   // }, [subscribe]);
 
-  const state = useSyncExternalStore(() => {
-    subscribe(forceUpdate);
-  }, getState);
+  // const state = useSyncExternalStore(() => {
+  //   subscribe(forceUpdate);
+  // }, getState);
+
+  const state = useSyncExternalStore(subscribe, getState);
+  
 
   const selectedState = selector(state);
 
